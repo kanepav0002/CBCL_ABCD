@@ -39,6 +39,7 @@ Install from CRAN:
 ```r
 install.packages(c("lavaan", "MplusAutomation"))
 ```
+
 ---
 
  ## Notes
