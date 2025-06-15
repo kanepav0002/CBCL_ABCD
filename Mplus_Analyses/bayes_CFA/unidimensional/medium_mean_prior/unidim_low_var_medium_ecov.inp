@@ -1,0 +1,44 @@
+TITLE: CBCL One-Factor Bayesian Model N -.5,0.10 IW 0.3,14
+
+DATA:
+FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/mplus_mixmodels
+/Data/subscale_log_train.dat";
+
+VARIABLE:
+NAMES = AnxDep WithDep SomCom SocProb Thought
+Attent Rule Aggress;
+
+USEVARIABLES = AnxDep WithDep SomCom SocProb Thought
+Attent Rule Aggress;
+MISSING ARE ALL (-999);
+
+ANALYSIS:
+ESTIMATOR = BAYES;
+PROCESSORS = 2;
+BITERATIONS = 1000000 (100000);
+BCONVERGENCE = .05;
+POINT = MEDIAN;
+PRIOR = 1000;
+CHAINS = 2;
+
+MODEL:
+P by AnxDep* WithDep SomCom SocProb Thought Attent Rule Aggress (Lam1-Lam8);
+P@1;
+
+
+AnxDep-Aggress (v1-v8);
+AnxDep-Aggress with AnxDep-Aggress (cov1-cov28);
+
+
+MODEL PRIORS:
+
+Lam1-Lam8~N(.5,0.10);
+cov1-cov28~IW(0.3,14);
+v1-v8~IW(1,14);
+
+
+OUTPUT: RESIDUAL STDYX CINTERVAL TECH1;
+
+
+
+

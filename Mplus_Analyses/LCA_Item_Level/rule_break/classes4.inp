@@ -1,0 +1,25 @@
+TITLE: LCA 
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/
+rule_break/rule_break.dat";
+VARIABLE: 
+NAMES = rb1 rb2 rb3 rb4 rb5 rb6 rb7 rb8
+     rb9 rb10 rb11 rb12 rb13 rb14 rb15 rb16 rb17 rb18; 
+MISSING ARE ALL (-999);
+CATEGORICAL ARE ALL;
+CLASSES = c(4);
+
+
+ANALYSIS: 
+	TYPE=MIXTURE;
+	STARTS = 1000 100;
+	LRTSTARTS=200 50 3000 100;
+
+OUTPUT: 
+	TECH10;
+	TECH11;
+	TECH12;
+	TECH14;
+
+SAVEDATA:
+	SAVE=CPROBABILITIES;
+	FILE="/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/rule_break/4c_cprobs.txt";

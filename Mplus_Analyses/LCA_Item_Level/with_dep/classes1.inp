@@ -1,0 +1,19 @@
+TITLE: LCA 
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/
+with_dep/with_dep.dat";
+VARIABLE: 
+NAMES = wd1 wd2 wd3 wd4 wd5 wd6 wd7 wd8; 
+MISSING ARE ALL (-999);
+CATEGORICAL ARE ALL;
+CLASSES = c(1);
+
+
+ANALYSIS: 
+	TYPE=MIXTURE;
+	STARTS = 1000 100;
+
+OUTPUT: 
+	TECH10;
+	TECH11;
+	TECH12;
+	STANDARDIZED;

@@ -1,0 +1,20 @@
+TITLE: subscale_LCA
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/
+mplus_mixmodels/Data/subscale_log.dat";
+VARIABLE: 
+	NAMES = anxdep withdep somatic social thought attent rulebr aggress; 
+	USEVARIABLES = anxdep withdep somatic social thought attent rulebr aggress; 
+	MISSING ARE ALL (-999);
+	CLASSES = c(7);
+
+ANALYSIS: 
+	TYPE=MIXTURE;
+	STARTS = 10000 1000;
+	STITERATIONS = 50;
+
+OUTPUT: 
+	TECH10;
+	TECH11;
+	TECH12;
+	STANDARDIZED;
+

@@ -1,0 +1,25 @@
+TITLE: LCA 
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/
+attention/attention.dat";
+VARIABLE: 
+NAMES = att1 att2 att3 att4 att5 att6 att7 att8
+     att9 att10 att11 att12 att13; 
+MISSING ARE ALL (-999);
+CATEGORICAL ARE ALL;
+CLASSES = c(10);
+
+
+ANALYSIS: 
+	TYPE=MIXTURE;
+	STARTS = 20000 2000;
+	LRTSTARTS=200 50 3000 100;
+
+OUTPUT: 
+	TECH10;
+	TECH11;
+	TECH12;
+	TECH14;
+
+SAVEDATA:
+	SAVE=CPROBABILITIES;
+	FILE="/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/attention/10c_cprobs.txt";

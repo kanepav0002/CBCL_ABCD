@@ -1,0 +1,55 @@
+TITLE: BIFAC_ITEM_FMM
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/
+mplus_mixmodels/Data/All_items.dat";
+VARIABLE: 
+	NAMES = ad1 ad2 ad3 ad4 ad5 ad6 ad7 ad8 ad9 ad10 ad11 ad12 ad13 
+	 wd1 wd2 wd3 wd4 wd5 wd6 wd7 wd8 
+	 soc1 soc2 soc3 soc4 soc5 soc6 soc7 soc8 soc9 soc10 soc11 
+	 som1 som2 som3 som4 som5 som6 som7 som8 som9 som10 som11 
+	 th1 th2 th3 th4 th5 th6 th7 th8 th9 th10 th11 th12 th13 th14 th15 
+	 att1 att2 att3 att4 att5 att6 att7 att8 att9 att10 att11 att12 att13 
+	 rb1 rb2 rb3 rb4 rb5 rb6 rb7 rb8 rb9 rb10 rb11 rb12 rb13 rb14 rb15 rb16 rb17 rb18 
+	 agg1 agg2 agg3 agg4 agg5 agg6 agg7 agg8 agg9 agg10 agg11 agg12 agg13 agg14 agg15 
+	 agg16 agg17 agg18;  
+
+	USEVARIABLES = ad1 ad2 ad3 ad4 ad5 ad6 ad7 ad8 ad9 ad10 ad11 ad12 ad13 
+	 wd1 wd2 wd3 wd4 wd5 wd6 wd7 wd8 
+	 soc1 soc2 soc3 soc4 soc5 soc6 soc7 soc8 soc9 soc10 soc11 
+	 som1 som2 som3 som4 som5 som6 som7 som8 som9 som10 som11 
+	 th1 th2 th3 th4 th5 th6 th7 th8 th9 th10 th11 th12 th13 th14 th15 
+	 att1 att2 att3 att4 att5 att6 att7 att8 att9 att10 att11 att12 att13 
+	 rb1 rb2 rb3 rb4 rb5 rb6 rb7 rb8 rb9 rb10 rb11 rb12 rb13 rb14 rb15 rb16 rb17 rb18 
+	 agg1 agg2 agg3 agg4 agg5 agg6 agg7 agg8 agg9 agg10 agg11 agg12 agg13 agg14 agg15 
+	 agg16 agg17 agg18;  
+
+	CATEGORICAL ARE ad1 ad2 ad3 ad4 ad5 ad6 ad7 ad8 ad9 ad10 ad11 ad12 ad13 
+	 wd1 wd2 wd3 wd4 wd5 wd6 wd7 wd8 
+	 soc1 soc2 soc3 soc4 soc5 soc6 soc7 soc8 soc9 soc10 soc11 
+	 som1 som2 som3 som4 som5 som6 som7 som8 som9 som10 som11 
+	 th1 th2 th3 th4 th5 th6 th7 th8 th9 th10 th11 th12 th13 th14 th15 
+	 att1 att2 att3 att4 att5 att6 att7 att8 att9 att10 att11 att12 att13 
+	 rb1 rb2 rb3 rb4 rb5 rb6 rb7 rb8 rb9 rb10 rb11 rb12 rb13 rb14 rb15 rb16 rb17 rb18 
+	 agg1 agg2 agg3 agg4 agg5 agg6 agg7 agg8 agg9 agg10 agg11 agg12 agg13 agg14 agg15 
+	 agg16 agg17 agg18;  
+
+	MISSING ARE ALL (-999);
+
+ANALYSIS: 
+	ESTIMATOR=WLSMV;
+	PROCESSORS=3;
+	ROTATION=BI-GEOMIN(ORTHOGONAL).
+  	ITERATIONS = 100000;
+  	CONVERGENCE = 0.001;
+  	COVERAGE = 0.10;
+	
+
+MODEL: 
+Fg F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 F13 F14 F15 by ad1-agg18(*1);
+[Fg-F15@0];
+
+OUTPUT: 
+  SAMPSTAT RESIDUAL STDYX
+  CINTERVAL PATTERNS TECH4 MODINDICES (ALL 3.841);
+
+
+

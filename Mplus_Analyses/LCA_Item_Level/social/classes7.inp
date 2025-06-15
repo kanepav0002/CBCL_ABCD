@@ -1,0 +1,25 @@
+TITLE: LCA 
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/
+social/social.dat";
+VARIABLE: 
+NAMES = soc1 soc2 soc3 soc4 soc5 soc6 soc7 soc8
+     soc9 soc10 soc11; 
+MISSING ARE ALL (-999);
+CATEGORICAL ARE ALL;
+CLASSES = c(7);
+
+
+ANALYSIS: 
+	TYPE=MIXTURE;
+	STARTS = 15000 1500;
+	LRTSTARTS=200 50 3000 100;
+
+OUTPUT: 
+	TECH10;
+	TECH11;
+	TECH12;
+	TECH14;
+
+SAVEDATA:
+	SAVE=CPROBABILITIES;
+	FILE="/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/social/7c_cprobs.txt";

@@ -1,0 +1,54 @@
+TITLE: bifac_subscales_FMM
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/
+mplus_mixmodels/Data/subscale_log.dat";
+VARIABLE: 
+	NAMES = anxdep withdep somatic social thought attent rulebr aggress; 
+	USEVARIABLES = anxdep withdep somatic social thought attent rulebr aggress; 
+	MISSING ARE ALL (-999);
+	CLASSES = c(5);
+
+ANALYSIS: 
+	TYPE=MIXTURE;
+	LRTSTARTS = 0 0 1000 250;
+	STARTS = 20000 2000;
+	PROCESSORS=3;
+	STITERATIONS = 50;
+
+MODEL: 
+	%OVERALL%
+	P BY anxdep-aggress; 
+
+	[anxdep-aggress](1-8);
+
+	%c#1%
+	P;
+	[P*];
+
+	%c#2%
+	P;
+	[P*];
+
+	%c#3%
+	P;
+	[P*];
+
+	%c#4%
+	P;
+	[P*];
+	
+	%c#5%
+	P;
+	[P@1];
+
+OUTPUT:
+	STANDARDIZED;
+	TECH3;
+	TECH4;
+	TECH7;
+	TECH11;
+	TECH14;
+
+SAVEDATA:
+	SAVE=CPROBABILITIES;
+	FILE="/home/kanep/kg98_scratch/Kane/behaviour_denoise/mplus_mixmodels/
+Mixture_models_subscales/FMM2/5_Classes/unidimensional_subscales_5c_cprobs.txt";

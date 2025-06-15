@@ -1,0 +1,26 @@
+TITLE: LCA 
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/
+aggress/aggress.dat";
+VARIABLE: 
+NAMES = agg1 agg2 agg3 agg4 agg5 agg6 agg7 agg8
+     agg9 agg10 agg11 agg12 agg13 agg14 agg15
+	agg16 agg17 agg18; 
+MISSING ARE ALL (-999);
+CATEGORICAL ARE ALL;
+CLASSES = c(4);
+
+
+ANALYSIS: 
+	TYPE=MIXTURE;
+	STARTS = 1000 100;
+	LRTSTARTS=200 50 3000 100;
+
+OUTPUT: 
+	TECH10;
+	TECH11;
+	TECH12;
+	TECH14;
+
+SAVEDATA:
+	SAVE=CPROBABILITIES;
+	FILE="/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/aggress/4c_cprobs.txt";

@@ -1,0 +1,24 @@
+TITLE: LCA test
+DATA: FILE = "/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/
+anx_dep/anx_dep.dat";
+VARIABLE: 
+NAMES = som1 som2 som3 som4 som5 som6 som7 som8
+     som9 som10 som11; 
+MISSING ARE ALL (-999);
+CATEGORICAL ARE ALL;
+	CLASSES = c(6);
+
+ANALYSIS: 
+	TYPE=MIXTURE;
+	STARTS = 10000 1000;
+	LRTSTARTS=200 50 3000 100;
+
+OUTPUT: 
+	TECH10;
+	TECH11;
+	TECH12;
+	TECH14;
+
+SAVEDATA:
+	SAVE=CPROBABILITIES;
+	FILE="/home/kanep/kg98_scratch/Kane/behaviour_denoise/LCA_IRT/anx_dep/6c_cprobs.txt";
